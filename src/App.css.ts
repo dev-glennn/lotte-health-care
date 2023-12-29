@@ -9,7 +9,7 @@ export const Container = style({
   width: '100vw',
   height: '100vh',
   overflow: 'hidden',
-  background: Colors.black,
+  background: Colors.Black,
 });
 
 export const Content = style({
@@ -19,7 +19,7 @@ export const Content = style({
   height: '100%',
   overflow: 'hidden',
   margin: '0 auto',
-  background: Colors.white,
+  background: Colors.White,
   '@media': {
     'screen and (max-width: 375px)': {
       width: '100%',
