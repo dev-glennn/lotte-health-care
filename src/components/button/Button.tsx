@@ -1,26 +1,27 @@
 import React from 'react';
 import { ButtonBase } from './styles.css';
+import { ContainClassName } from '../../utils/common';
 
-type Props = React.ButtonHTMLAttributes<HTMLButtonElement>;
+type Props = {
+  color?: 'purple' | undefined;
+} & React.ButtonHTMLAttributes<HTMLButtonElement>;
 
 const Button = React.forwardRef<HTMLButtonElement, Props>(
-  ({ type = 'button', ...props }, ref) => {
-    const customClassName = [ButtonBase];
-    if (props?.className) customClassName.push(props.className);
+  ({ type = 'button', color = 'purple', ...props }, ref) => {
+    const customClassName = [ButtonBase({ color })];
+    const { className = '' } = props;
+    if (className) {
+      customClassName.push(className);
+    }
     return (
       <button
         {...props}
         ref={ref}
         type={type}
-        className={customClassName.join(', ')}
+        className={ContainClassName(customClassName)}
       />
     );
   }
 );
 
 export default Button;
-
-// "@vanilla-extract/css": "^1.14.0",
-// "@vanilla-extract/dynamic": "^2.1.0",
-// "@vanilla-extract/recipes": "^0.5.1",
-// "@vanilla-extract/vite-plugin": "^3.9.3",
