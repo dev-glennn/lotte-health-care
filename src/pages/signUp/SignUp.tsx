@@ -47,8 +47,15 @@ export const SignUp = () => {
   }, [checkValidation, password]);
 
   const validSubmit = useMemo(() => {
-    return !validEmail && !validName && !validPassword;
-  }, [validEmail, validName, validPassword]);
+    return (
+      !!email &&
+      !!password &&
+      !!name &&
+      !validEmail &&
+      !validName &&
+      !validPassword
+    );
+  }, [email, name, password, validEmail, validName, validPassword]);
 
   // actions
   const onSubmit = useCallback(
