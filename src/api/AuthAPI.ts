@@ -52,5 +52,27 @@ export const FindEmail = async (email: string) => {
   const loginData = await fetch('/public/data/loginData.json').then((res) =>
     res.json()
   );
-  return loginData.find((data: PostSignUpParams) => data.email === email);
+  return loginData.find((user: PostSignUpParams) => user.email === email);
+};
+
+/**
+ * 로그인 API
+ * @param params PostSignUpParams
+ * @returns {boolean} true | error
+ */
+export const GetLogin = async (
+  params: Pick<PostSignUpParams, 'email' | 'password'>
+) => {
+  const { email, password } = params;
+  const loginData = await fetch('/public/data/loginData.json').then((res) =>
+    res.json()
+  );
+  const isAuth = loginData.find(
+    (user: PostSignUpParams) =>
+      user.email === email && user.password === password
+  );
+  if (!isAuth) {
+    throw new Error('일치하는 계정이 존재하지 않아요!');
+  }
+  return true;
 };

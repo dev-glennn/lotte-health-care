@@ -2,17 +2,33 @@ import { FormEvent, useCallback } from 'react';
 import { LabelSpan } from '../../components/label/styles.css';
 import Label from '../../components/label';
 import { Button, Input } from '../../components';
-import Sign from '../../components/sign';
 import useInput from '../../hooks/useInput';
+import Sign from '../../components/sign';
 import { SignButton } from '../../components/sign/styles.css';
+import { GetLogin } from '../../api/AuthAPI';
 
 export const SignIn = () => {
   const [email, onChangeEmail] = useInput<string>('');
   const [password, onChangePassword] = useInput<string>('');
 
-  const onSubmit = useCallback((e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  }, []);
+  const onSubmit = useCallback(
+    (e: FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      const getLogin = async () => {
+        try {
+          await GetLogin({ email, password });
+        } catch (e) {
+          if (e instanceof Error) {
+            if (e?.message) {
+              alert(e.message);
+            }
+          }
+        }
+      };
+      getLogin();
+    },
+    [email, password]
+  );
 
   return (
     <Sign.Container>
