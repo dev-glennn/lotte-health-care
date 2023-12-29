@@ -1,0 +1,17 @@
+[
+  {
+    "email": "glenn@gmail.com",
+    "password": "Glenn0401!",
+    "name": "조민주"
+  },
+  {
+    "email": "lottie@gmail.com",
+    "password": "Lotte0401!",
+    "name": "롯데헬스케어"
+  },
+  {
+    "email": "test@gmail.com",
+    "password": "Test0401!",
+    "name": "테스터"
+  }
+]
