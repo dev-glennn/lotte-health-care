@@ -82,37 +82,20 @@ export const SignUp = () => {
         linkTo="/signIn"
       />
       <form onSubmit={onSubmit}>
-        {/* 이메일 */}
+        {/* 아이디 */}
         <Label id="email-label">
-          <span className={LabelSpan}>이메일</span>
+          <span className={LabelSpan}>아이디</span>
           <Input
             type="email"
             id="email"
             name="email"
             value={email}
-            placeholder="아이디를 입력해주세요"
+            placeholder="이메일을 입력해주세요"
             onChange={onChangeEmail}
           />
           {validEmail && (
             <PText id="email-validation" className={ValidateCaption}>
               {validEmail}
-            </PText>
-          )}
-        </Label>
-        {/* 이름 */}
-        <Label id="name-label">
-          <span className={LabelSpan}>이름</span>
-          <Input
-            type="text"
-            id="name"
-            name="name"
-            value={name}
-            placeholder="이름을 입력해주세요"
-            onChange={onChangeName}
-          />
-          {validName && (
-            <PText id="name-validation" className={ValidateCaption}>
-              {validName}
             </PText>
           )}
         </Label>
@@ -130,6 +113,23 @@ export const SignUp = () => {
           {validPassword && (
             <PText id="password-validation" className={ValidateCaption}>
               {validPassword}
+            </PText>
+          )}
+        </Label>
+        {/* 이름 */}
+        <Label id="name-label">
+          <span className={LabelSpan}>이름</span>
+          <Input
+            type="text"
+            id="name"
+            name="name"
+            value={name}
+            placeholder="이름을 입력해주세요"
+            onChange={onChangeName}
+          />
+          {validName && (
+            <PText id="name-validation" className={ValidateCaption}>
+              {validName}
             </PText>
           )}
         </Label>

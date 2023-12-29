@@ -22,6 +22,12 @@ export const PostSignUp = async (params: PostSignUpParams) => {
   } else if (await FindEmail(email)) {
     throw new Error('이미 가입한 이메일이에요');
   }
+  // 비밀번호 유효성 체크
+  if (!params.password) {
+    throw new Error('비밀번호를 입력해주세요');
+  } else if (!checkValidation(password, RegExpRule.password)) {
+    throw new Error('8자 이상의 영문 대소문자, 숫자, 특수문자를 포함해주세요');
+  }
   // 이름 유효성 체크
   if (!name) {
     throw new Error('이름을 입력해주세요');
@@ -33,12 +39,6 @@ export const PostSignUp = async (params: PostSignUpParams) => {
     )
   ) {
     throw new Error('2글자 이상 한글 완성형, 3글자 이상 영문을 입력해주세요');
-  }
-  // 비밀번호 유효성 체크
-  if (!params.password) {
-    throw new Error('비밀번호를 입력해주세요');
-  } else if (!checkValidation(password, RegExpRule.password)) {
-    throw new Error('8자 이상의 영문 대소문자, 숫자, 특수문자를 포함해주세요');
   }
   return true;
 };
