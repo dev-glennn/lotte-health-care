@@ -13,6 +13,10 @@ export const FontWhite = style({
   color: Colors.White,
 });
 
+export const FontPurple = style({
+  color: Colors.Purple,
+});
+
 export const BackgroundFullLogo = style([
   PositionAbsolute,
   {

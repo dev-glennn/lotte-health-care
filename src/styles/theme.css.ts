@@ -19,9 +19,19 @@ const Body = style({
   fontStyle: 'normal',
 });
 
+const Caption = style({
+  fontSize: '0.85rem',
+  fontStyle: 'normal',
+});
+
 export const Fonts = {
   Title: style({
     fontSize: '1.7rem',
+    fontWeight: 700,
+    fontStyle: 'normal',
+  }),
+  SubTitle: style({
+    fontSize: '1.5rem',
     fontWeight: 700,
     fontStyle: 'normal',
   }),
@@ -37,9 +47,16 @@ export const Fonts = {
       fontWeight: 400,
     },
   ]),
-  Caption: style({
-    fontSize: '0.85rem',
-    fontWeight: 400,
-    fontStyle: 'normal',
-  }),
+  CaptionBold: style([
+    Caption,
+    {
+      fontWeight: 700,
+    },
+  ]),
+  Caption: style([
+    Caption,
+    {
+      fontWeight: 400,
+    },
+  ]),
 };
