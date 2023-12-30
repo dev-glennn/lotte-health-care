@@ -3,18 +3,24 @@
     "token": "926f7706-862a-48ca-9c91-5f87973dd810",
     "email": "glenn@gmail.com",
     "password": "Glenn0401!",
-    "name": "조민주"
+    "name": "조민주",
+    "walk": 1508,
+    "point": 10000
   },
   {
     "token": "926f7706-862a-48ca-9c91-5f87973dd811",
     "email": "lottie@gmail.com",
     "password": "Lotte0401!",
-    "name": "롯데헬스케어"
+    "name": "롯데헬스케어",
+    "walk": 9000,
+    "point": 1200
   },
   {
     "token": "926f7706-862a-48ca-9c91-5f87973dd812",
     "email": "test@gmail.com",
     "password": "Test0401!",
-    "name": "테스터"
+    "name": "테스터",
+    "walk": 3200,
+    "point": 3200
   }
 ]

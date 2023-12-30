@@ -1,18 +1,21 @@
 import { RegExpRule, useCheckValidation } from '../hooks/useValidationCheck';
 const checkValidation = useCheckValidation;
 
-type PostSignUpParams = {
+export type UserTypes = {
+  token: string;
   email: string;
   name: string;
   password: string;
+  walk: number;
+  point: number;
 };
 
 /**
  * 회원가입 API
- * @param params PostSignUpParams
+ * @param params UserTypes
  * @returns {boolean} true or throw Error
  */
-export const AuthSignUp = async (params: PostSignUpParams) => {
+export const AuthSignUp = async (params: UserTypes) => {
   const { email, name, password } = params;
   // 이메일 유효성 체크
   if (!email) {
@@ -46,22 +49,22 @@ export const AuthSignUp = async (params: PostSignUpParams) => {
 /**
  * 이메일로 가입된 계정을 찾는 API
  * @param email string
- * @returns PostSignUpParams
+ * @returns UserTypes
  */
 export const FindEmail = async (email: string) => {
   const loginData = await fetch('/public/data/loginData.json').then((res) =>
     res.json()
   );
-  return loginData.find((user: PostSignUpParams) => user.email === email);
+  return loginData.find((user: UserTypes) => user.email === email);
 };
 
 /**
  * 로그인 API
- * @param params PostSignUpParams
+ * @param params UserTypes
  * @returns {boolean} true | error
  */
 export const AuthSignIn = async (
-  params: Pick<PostSignUpParams, 'email' | 'password'>
+  params: Pick<UserTypes, 'email' | 'password'>
 ) => {
   const { email, password } = params;
   // Login
@@ -70,12 +73,22 @@ export const AuthSignIn = async (
   );
   // Check Id & PW
   const isAuth = loginData.find(
-    (user: PostSignUpParams) =>
-      user.email === email && user.password === password
+    (user: UserTypes) => user.email === email && user.password === password
   );
   if (!isAuth) {
     throw new Error('일치하는 계정이 존재하지 않아요!');
   }
   // Token
   return { accessToken: isAuth.token };
+};
+
+/**
+ * 회원정보를 가져오는 API
+ * @returns
+ */
+export const GetUserInfo = async ({ token }: { token: string }) => {
+  const loginData = await fetch('/public/data/loginData.json').then((res) =>
+    res.json()
+  );
+  return loginData.find((user: UserTypes) => user.token === token);
 };

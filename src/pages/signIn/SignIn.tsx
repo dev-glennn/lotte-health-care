@@ -24,7 +24,7 @@ export const SignIn = () => {
           if (!accessToken) {
             throw new Error('다시 시도해주세요');
           }
-          localStorage.setItem('uuid', accessToken);
+          localStorage.setItem('token', accessToken);
           navigate('/home');
         } catch (e) {
           if (e instanceof Error) {
