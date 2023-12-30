@@ -1,12 +1,14 @@
 import { FormEvent, useCallback } from 'react';
-import { LabelSpan } from '../../components/label/styles.css';
-import Label from '../../components/label';
-import { Button, Input } from '../../components';
 import useInput from '../../hooks/useInput';
-import Sign from '../../components/sign';
-import { SignButton } from '../../components/sign/styles.css';
+import { Button, Input } from '../../components';
+import {
+  SignButton,
+  LabelSpan,
+  LabelStyle,
+} from '../../components/sign/styles.css';
 import { AuthSignIn } from '../../api/AuthAPI';
 import { useNavigate } from 'react-router';
+import Sign from '../../components/sign';
 
 export const SignIn = () => {
   const navigate = useNavigate();
@@ -47,7 +49,7 @@ export const SignIn = () => {
       />
       <form onSubmit={onSubmit}>
         {/* 이메일 */}
-        <Label id="email-label">
+        <label id="email-label" className={LabelStyle}>
           <span className={LabelSpan}>아이디</span>
           <Input
             type="email"
@@ -57,19 +59,19 @@ export const SignIn = () => {
             placeholder="이메일을 입력"
             onChange={onChangeEmail}
           />
-        </Label>
+        </label>
         {/* 이메일 */}
-        <Label id="password-label">
+        <label id="password-label" className={LabelStyle}>
           <span className={LabelSpan}>비밀번호</span>
           <Input
             type="password"
             id="password"
             name="password"
-            value={password}
             placeholder="비밀번호를 입력"
+            value={password}
             onChange={onChangePassword}
           />
-        </Label>
+        </label>
         {/* Button */}
         <Button type="submit" className={SignButton}>
           이메일로 로그인

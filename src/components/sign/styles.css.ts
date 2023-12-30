@@ -46,3 +46,17 @@ export const SignSubTitle = style([
 export const SignButton = style({
   marginTop: '3rem',
 });
+
+export const LabelStyle = style({
+  display: 'flex',
+  flexDirection: 'column',
+  marginBottom: '1.5rem',
+});
+
+export const LabelSpan = style([Fonts.Caption, FontWhite]);
+
+globalStyle(`${LabelStyle} > span`, {
+  display: 'block',
+  textAlign: 'left',
+  marginBottom: '0.2rem',
+});

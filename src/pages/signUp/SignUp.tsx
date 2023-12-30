@@ -2,9 +2,11 @@ import { FormEvent, useCallback, useMemo } from 'react';
 import { Button, Input } from '../../components';
 import { Sign } from '../../components/sign/Sign';
 import useInput from '../../hooks/useInput';
-import Label from '../../components/label';
-import { LabelSpan } from '../../components/label/styles.css';
-import { SignButton } from '../../components/sign/styles.css';
+import {
+  SignButton,
+  LabelSpan,
+  LabelStyle,
+} from '../../components/sign/styles.css';
 import PText from '../../components/text';
 import { ValidateCaption } from './styles.css';
 import { RegExpRule, useCheckValidation } from '../../hooks/useValidationCheck';
@@ -90,7 +92,7 @@ export const SignUp = () => {
       />
       <form onSubmit={onSubmit}>
         {/* 아이디 */}
-        <Label id="email-label">
+        <label id="email-label" className={LabelStyle}>
           <span className={LabelSpan}>아이디</span>
           <Input
             type="email"
@@ -105,9 +107,9 @@ export const SignUp = () => {
               {validEmail}
             </PText>
           )}
-        </Label>
+        </label>
         {/* 비밀번호 */}
-        <Label id="password-label">
+        <label id="password-label" className={LabelStyle}>
           <span className={LabelSpan}>비밀번호</span>
           <Input
             type="password"
@@ -122,9 +124,9 @@ export const SignUp = () => {
               {validPassword}
             </PText>
           )}
-        </Label>
+        </label>
         {/* 이름 */}
-        <Label id="name-label">
+        <label id="name-label" className={LabelStyle}>
           <span className={LabelSpan}>이름</span>
           <Input
             type="text"
@@ -139,7 +141,7 @@ export const SignUp = () => {
               {validName}
             </PText>
           )}
-        </Label>
+        </label>
         {/* Button */}
         <Button type="submit" disabled={!validSubmit} className={SignButton}>
           회원가입
