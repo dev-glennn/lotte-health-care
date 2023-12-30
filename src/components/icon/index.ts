@@ -1,3 +1,3 @@
-import Icon from './Icon';
-
-export default Icon;
+export * from './FootPointIcon';
+export * from './LogoutIcon';
+export * from './SavingIcon';
