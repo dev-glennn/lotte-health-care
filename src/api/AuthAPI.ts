@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import { RegExpRule, useCheckValidation } from '../hooks/useValidationCheck';
 const checkValidation = useCheckValidation;
 

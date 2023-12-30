@@ -23,6 +23,7 @@ export const Home = () => {
     <div className={HomeContainer}>
       <Header />
       <CustomTitle />
+      <WalkCard />
     </div>
   );
 };
