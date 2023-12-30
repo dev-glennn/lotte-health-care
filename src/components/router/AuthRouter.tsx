@@ -1,11 +1,13 @@
 import { useEffect, useMemo } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useUserInfo } from '../../hooks/useUserInfo';
+import { AuthLogout } from '../../api/AuthAPI';
 
 export const AuthRoutes = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const getUserInfo = useUserInfo;
+  const logout = AuthLogout;
   const token = localStorage.getItem('token');
   const isAuth = useMemo(() => !!token, [token]);
 
@@ -13,11 +15,11 @@ export const AuthRoutes = () => {
   useEffect(() => {
     getUserInfo().then((res) => {
       if (!res) {
-        localStorage.removeItem('token');
+        logout();
         navigate('/signIn');
       }
     });
-  }, [getUserInfo, navigate, token]);
+  }, [getUserInfo, logout, navigate, token]);
 
   // token 유무로 redirect
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { ReactNode, useMemo } from 'react';
+import { ReactNode, useCallback, useMemo } from 'react';
 import {
   HeaderButton,
   HeaderContainer,
@@ -8,6 +8,8 @@ import {
 import { FootPointIcon, LogoutIcon, SavingIcon } from '../icon';
 import { MoneyComma } from '../../utils/common';
 import { useGetUserAtom } from '../../atoms/UserAtoms.atom';
+import { AuthLogout } from '../../api/AuthAPI';
+import { Navigate, useNavigate } from 'react-router';
 
 const HeaderItem = ({ icon, text }: { icon: ReactNode; text: string }) => {
   return (
@@ -19,7 +21,9 @@ const HeaderItem = ({ icon, text }: { icon: ReactNode; text: string }) => {
 };
 
 export const Header = () => {
+  const logout = AuthLogout;
   const userInfo = useGetUserAtom();
+  const navigate = useNavigate();
 
   const walkValue = useMemo(
     () => `${MoneyComma(userInfo?.walk || 0)} 걸음`,
@@ -29,6 +33,11 @@ export const Header = () => {
     () => `${MoneyComma(userInfo?.point || 0)}원`,
     [userInfo?.point]
   );
+
+  const handlerLogout = useCallback(() => {
+    logout();
+    navigate('/signIn');
+  }, [logout, navigate]);
 
   return (
     <div className={HeaderContainer}>
@@ -43,7 +52,7 @@ export const Header = () => {
         text={pointValue}
       />
       {/* 로그아웃 */}
-      <button className={HeaderButton}>
+      <button className={HeaderButton} onClick={handlerLogout}>
         <LogoutIcon className={IconSize} />
       </button>
     </div>

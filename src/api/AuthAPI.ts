@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { RegExpRule, useCheckValidation } from '../hooks/useValidationCheck';
 const checkValidation = useCheckValidation;
 
@@ -91,4 +92,11 @@ export const GetUserInfo = async ({ token }: { token: string }) => {
     res.json()
   );
   return loginData.find((user: UserTypes) => user.token === token);
+};
+
+/**
+ * 로그아웃 API
+ */
+export const AuthLogout = () => {
+  localStorage.removeItem('token');
 };
