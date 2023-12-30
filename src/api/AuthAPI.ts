@@ -56,6 +56,19 @@ export const FindEmail = async (email: string) => {
 };
 
 /**
+ * uuid로 JWT 토큰 발행
+ * @returns {string}
+ */
+export const UUID4 = () => {
+  let d = new Date().getTime();
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+    const r = (d + Math.random() * 16) % 16 | 0;
+    d = Math.floor(d / 16);
+    return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+  });
+};
+
+/**
  * 로그인 API
  * @param params PostSignUpParams
  * @returns {boolean} true | error
@@ -76,5 +89,6 @@ export const AuthSignIn = async (
   if (!isAuth) {
     throw new Error('일치하는 계정이 존재하지 않아요!');
   }
-  return true;
+  // Token
+  return { accessToken: UUID4() };
 };

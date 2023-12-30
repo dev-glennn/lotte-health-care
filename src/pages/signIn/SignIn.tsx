@@ -6,8 +6,10 @@ import useInput from '../../hooks/useInput';
 import Sign from '../../components/sign';
 import { SignButton } from '../../components/sign/styles.css';
 import { AuthSignIn } from '../../api/AuthAPI';
+import { useNavigate } from 'react-router';
 
 export const SignIn = () => {
+  const navigate = useNavigate();
   const [email, onChangeEmail] = useInput<string>('');
   const [password, onChangePassword] = useInput<string>('');
 
@@ -17,6 +19,11 @@ export const SignIn = () => {
       const handlerSignIn = async () => {
         try {
           const { accessToken } = await AuthSignIn({ email, password });
+          if (!accessToken) {
+            throw new Error('다시 시도해주세요');
+          }
+          localStorage.setItem('uuid', accessToken);
+          navigate('/home');
         } catch (e) {
           if (e instanceof Error) {
             if (e?.message) {
@@ -27,7 +34,7 @@ export const SignIn = () => {
       };
       handlerSignIn();
     },
-    [email, password]
+    [email, navigate, password]
   );
 
   return (

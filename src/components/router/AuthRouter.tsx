@@ -4,7 +4,7 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 export const AuthRoutes = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const isAuth: boolean = false;
+  const isAuth = !!localStorage.getItem('uuid');
 
   useEffect(() => {
     const authPage = ['/signIn', '/signUp'];
