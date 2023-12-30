@@ -12,7 +12,7 @@ type PostSignUpParams = {
  * @param params PostSignUpParams
  * @returns {boolean} true or throw Error
  */
-export const PostSignUp = async (params: PostSignUpParams) => {
+export const AuthSignUp = async (params: PostSignUpParams) => {
   const { email, name, password } = params;
   // 이메일 유효성 체크
   if (!email) {
@@ -60,13 +60,15 @@ export const FindEmail = async (email: string) => {
  * @param params PostSignUpParams
  * @returns {boolean} true | error
  */
-export const GetLogin = async (
+export const AuthSignIn = async (
   params: Pick<PostSignUpParams, 'email' | 'password'>
 ) => {
   const { email, password } = params;
+  // Login
   const loginData = await fetch('/public/data/loginData.json').then((res) =>
     res.json()
   );
+  // Check Id & PW
   const isAuth = loginData.find(
     (user: PostSignUpParams) =>
       user.email === email && user.password === password

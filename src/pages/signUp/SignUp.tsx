@@ -9,7 +9,7 @@ import PText from '../../components/text';
 import { ValidateCaption } from './styles.css';
 import { RegExpRule, useCheckValidation } from '../../hooks/useValidationCheck';
 import { useNavigate } from 'react-router';
-import { PostSignUp } from '../../api/AuthAPI';
+import { AuthSignUp } from '../../api/AuthAPI';
 
 export const SignUp = () => {
   // data
@@ -61,9 +61,9 @@ export const SignUp = () => {
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const signUpHandler = async () => {
+      const handlerSignUp = async () => {
         try {
-          await PostSignUp({ email, password, name });
+          await AuthSignUp({ email, password, name });
           alert('회원가입이 완료되었어요!');
           navigate('/signIn');
         } catch (e) {
@@ -74,7 +74,7 @@ export const SignUp = () => {
           }
         }
       };
-      signUpHandler();
+      handlerSignUp();
     },
     [email, name, navigate, password]
   );

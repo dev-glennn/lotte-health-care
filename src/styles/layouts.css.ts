@@ -18,6 +18,7 @@ export const BackgroundFullLogo = style([
   {
     backgroundImage: 'url(/src/assets/images/background.png)',
     backgroundPosition: 'center',
-    backgroundSize: '100 auto',
+    backgroundSize: 'auto 100%',
+    backgroundRepeat: 'no-repeat',
   },
 ]);

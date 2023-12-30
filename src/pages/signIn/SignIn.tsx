@@ -5,7 +5,7 @@ import { Button, Input } from '../../components';
 import useInput from '../../hooks/useInput';
 import Sign from '../../components/sign';
 import { SignButton } from '../../components/sign/styles.css';
-import { GetLogin } from '../../api/AuthAPI';
+import { AuthSignIn } from '../../api/AuthAPI';
 
 export const SignIn = () => {
   const [email, onChangeEmail] = useInput<string>('');
@@ -14,9 +14,9 @@ export const SignIn = () => {
   const onSubmit = useCallback(
     (e: FormEvent<HTMLFormElement>) => {
       e.preventDefault();
-      const getLogin = async () => {
+      const handlerSignIn = async () => {
         try {
-          await GetLogin({ email, password });
+          const { accessToken } = await AuthSignIn({ email, password });
         } catch (e) {
           if (e instanceof Error) {
             if (e?.message) {
@@ -25,7 +25,7 @@ export const SignIn = () => {
           }
         }
       };
-      getLogin();
+      handlerSignIn();
     },
     [email, password]
   );
