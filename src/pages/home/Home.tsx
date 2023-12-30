@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { HomeContainer } from './styles.css';
+import { Header } from '../../components/home/Header';
 import { useSetUserAtom } from '../../atoms/UserAtoms.atom';
 import { useUserInfo } from '../../hooks/useUserInfo';
 
@@ -7,6 +8,7 @@ export const Home = () => {
   const getUserInfo = useUserInfo;
   const setUserAtom = useSetUserAtom();
   const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     getUserInfo().then((res) => {
       if (res) setUserAtom(() => res);
@@ -15,8 +17,10 @@ export const Home = () => {
   }, [getUserInfo, setUserAtom]);
 
   if (loading) return <></>;
+
   return (
     <div className={HomeContainer}>
+      <Header />
     </div>
   );
 };
