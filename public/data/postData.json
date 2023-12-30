@@ -1,0 +1,49 @@
+{
+  "drug": [{
+    "name": "리얼그램 유기농 비오틴 프리미엄 (800mg x 30정)",
+    "money": 14000,
+    "favorite": true
+  }, {
+    "name": "리얼그래매 활성엽산B (500mg x 30정)",
+    "money": 17000,
+    "favorite": false
+  }, {
+    "name": "토마토 연구소 마시는 멀티 비타민(100mg x 24포)",
+    "money": 31950,
+    "favorite": false
+  }],
+  "food": [
+    {
+      "name": "마이밀 마시는 뉴프로틴 오리지널 (190mlx16팩)",
+      "money": 18900,
+      "favorite": false
+    },
+    {
+      "name": "마이밀 마시는 뉴프로틴 딥초고 (190mlx16팩)",
+      "money": 18900,
+      "favorite": true
+    },
+    {
+      "name": "마이밀 마시는 뉴프로틴 로우슈거 바나나 (190mlx16팩)",
+      "money": 18900,
+      "favorite": true
+    }
+  ],
+  "fitness": [
+    {
+      "name": "아디다스 튜빙밴드 (강)",
+      "money": 14320,
+      "favorite": false
+    },
+    {
+      "name": "아디다스 튜빙밴드 (중)",
+      "money": 11920,
+      "favorite": true
+    },
+    {
+      "name": "아디다스 프리미엄 푸쉬업바",
+      "money": 14320,
+      "favorite": false
+    }
+  ]
+}
