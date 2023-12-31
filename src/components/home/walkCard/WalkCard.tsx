@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { useGetUserAtom } from '../../atoms/UserAtoms.atom';
+import { useGetUserAtom } from '../../../atoms/UserAtoms.atom';
+import { MoneyComma } from '../../../utils/common';
+import PText from '../../text';
 import { WalkCardStyle, WalkSubTitle } from './walkCard.css';
-import { MoneyComma } from '../../utils/common';
-import { Fonts } from '../../styles/theme.css';
-import PText from '../text';
+import { Fonts } from '../../../styles/theme.css';
 
 export const WalkCard = () => {
   const userInfo = useGetUserAtom();
