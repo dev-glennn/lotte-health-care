@@ -24,36 +24,58 @@ const Caption = style({
   fontStyle: 'normal',
 });
 
+const letterSpacing = style({
+  letterSpacing: '-0.03rem',
+});
+
 export const Fonts = {
-  Title: style({
-    fontSize: '1.7rem',
-    fontWeight: 700,
-    fontStyle: 'normal',
-  }),
-  SubTitle: style({
-    fontSize: '1.5rem',
-    fontWeight: 700,
-    fontStyle: 'normal',
-  }),
+  Title: style([
+    letterSpacing,
+    {
+      fontSize: '1.7rem',
+      fontWeight: 700,
+      fontStyle: 'normal',
+    },
+  ]),
+  SubTitle: style([
+    letterSpacing,
+    {
+      fontSize: '1.5rem',
+      fontWeight: 700,
+      fontStyle: 'normal',
+    },
+  ]),
+  Header: style([
+    letterSpacing,
+    {
+      fontSize: '1.3rem',
+      fontWeight: 700,
+      fontStyle: 'normal',
+    },
+  ]),
   BodyBold: style([
     Body,
+    letterSpacing,
     {
       fontWeight: 600,
     },
   ]),
   Body: style([
     Body,
+    letterSpacing,
     {
       fontWeight: 400,
     },
   ]),
   CaptionBold: style([
+    letterSpacing,
     Caption,
     {
       fontWeight: 700,
     },
   ]),
   Caption: style([
+    letterSpacing,
     Caption,
     {
       fontWeight: 400,
