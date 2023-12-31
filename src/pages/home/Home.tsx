@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
+import { HomeBg, HomeContainer } from './styles.css';
 import { Header } from '../../components/home/header/Header';
 import {
+  CustomTitle,
   DrugCard,
 } from '../../components/home';
 import { useGetUserAtom, useSetUserAtom } from '../../atoms/UserAtoms.atom';
@@ -45,6 +47,7 @@ export const Home = () => {
 
   return (
     <div className={HomeContainer}>
+      <div className={HomeBg} />
       <Header />
       <CustomTitle />
       <WalkCard />
