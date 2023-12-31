@@ -1,15 +1,22 @@
-import { useEffect, useState } from 'react';
-import { HomeContainer } from './styles.css';
-import { Header } from '../../components/home/Header';
-import { CustomTitle, WalkCard } from '../../components/home';
-import { useSetUserAtom } from '../../atoms/UserAtoms.atom';
+import { useEffect, useMemo, useState } from 'react';
+import { Header } from '../../components/home/header/Header';
+import {
+  DrugCard,
+} from '../../components/home';
+import { useGetUserAtom, useSetUserAtom } from '../../atoms/UserAtoms.atom';
 import { useUserInfo } from '../../hooks/useUserInfo';
+import { GetPostList } from '../../api/PostApi';
+import { useSetPostAtom } from '../../atoms/PostAtoms.atom';
 import { AuthLogout } from '../../api/AuthAPI';
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
   const navigate = useNavigate();
   const getUserInfo = useUserInfo;
+  const getPostList = GetPostList;
+  const getUserAtom = useGetUserAtom();
   const setUserAtom = useSetUserAtom();
+  const setPostAtom = useSetPostAtom();
   const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
@@ -21,7 +28,18 @@ export const Home = () => {
       }
       setLoading(false);
     });
-  }, [getUserInfo, setUserAtom]);
+  }, [getUserInfo, navigate, setUserAtom]);
+
+  const isUserAtom = useMemo(() => {
+    return !!getUserAtom;
+  }, [getUserAtom]);
+
+  useEffect(() => {
+    if (!isUserAtom) return;
+    getPostList().then((res) => {
+      setPostAtom(() => res);
+    });
+  }, [getPostList, isUserAtom, setPostAtom]);
 
   if (loading) return <></>;
 
@@ -30,6 +48,7 @@ export const Home = () => {
       <Header />
       <CustomTitle />
       <WalkCard />
+      <DrugCard />
     </div>
   );
 };
