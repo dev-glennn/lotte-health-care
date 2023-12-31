@@ -6,6 +6,7 @@ import {
   DrugCard,
   FitnessCard,
   FoodCard,
+  WalkCard,
 } from '../../components/home';
 import { useGetUserAtom, useSetUserAtom } from '../../atoms/UserAtoms.atom';
 import { useUserInfo } from '../../hooks/useUserInfo';
@@ -54,6 +55,7 @@ export const Home = () => {
       <CustomTitle />
       <WalkCard />
       <DrugCard />
+      <FitnessCard />
       <FoodCard />
     </div>
   );

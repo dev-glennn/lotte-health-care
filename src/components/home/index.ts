@@ -5,3 +5,4 @@ export * from './cardWrap/CardTitle';
 export * from './ListItem/ListItem';
 export * from './drugCard/DrugCard';
 export * from './foodCard/FoodCard';
+export * from './fitnessCard/FitnessCard';
