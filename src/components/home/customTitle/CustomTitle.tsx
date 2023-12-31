@@ -1,5 +1,5 @@
-import { useGetUserAtom } from '../../atoms/UserAtoms.atom';
-import { FontPurple } from '../../styles/layouts.css';
+import { useGetUserAtom } from '../../../atoms/UserAtoms.atom';
+import { FontPurple } from '../../../styles/layouts.css';
 import { CustomHeaderTitle } from './customTitle.css';
 
 export const CustomTitle = () => {

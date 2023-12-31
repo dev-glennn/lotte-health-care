@@ -1,5 +1,5 @@
 import { style } from '@vanilla-extract/css';
-import { Fonts } from '../../styles/theme.css';
+import { Fonts } from '../../../styles/theme.css';
 
 const Color = style({
   color: 'rgba(0, 0, 0, 0.6)',
@@ -19,6 +19,7 @@ export const HeaderContainer = style([
     alignItems: 'center',
     gap: '1rem',
     padding: '0 1.5rem',
+    zIndex: 5,
   },
   Color,
 ]);

@@ -5,11 +5,11 @@ import {
   HeaderItemStyle,
   IconSize,
 } from './header.css';
-import { FootPointIcon, LogoutIcon, SavingIcon } from '../icon';
-import { MoneyComma } from '../../utils/common';
-import { useGetUserAtom } from '../../atoms/UserAtoms.atom';
-import { AuthLogout } from '../../api/AuthAPI';
-import { Navigate, useNavigate } from 'react-router';
+import { FootPointIcon, LogoutIcon, SavingIcon } from '../../icon';
+import { MoneyComma } from '../../../utils/common';
+import { useGetUserAtom } from '../../../atoms/UserAtoms.atom';
+import { AuthLogout } from '../../../api/AuthAPI';
+import { useNavigate } from 'react-router';
 
 const HeaderItem = ({ icon, text }: { icon: ReactNode; text: string }) => {
   return (
