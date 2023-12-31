@@ -4,6 +4,8 @@ import { Header } from '../../components/home/header/Header';
 import {
   CustomTitle,
   DrugCard,
+  FitnessCard,
+  FoodCard,
 } from '../../components/home';
 import { useGetUserAtom, useSetUserAtom } from '../../atoms/UserAtoms.atom';
 import { useUserInfo } from '../../hooks/useUserInfo';
@@ -52,6 +54,7 @@ export const Home = () => {
       <CustomTitle />
       <WalkCard />
       <DrugCard />
+      <FoodCard />
     </div>
   );
 };
