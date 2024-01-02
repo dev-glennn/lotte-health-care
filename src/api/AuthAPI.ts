@@ -67,6 +67,11 @@ export const AuthSignIn = async (
   params: Pick<UserTypes, 'email' | 'password'>
 ) => {
   const { email, password } = params;
+  if (!email) {
+    throw new Error('이메일을 입력해주세요');
+  } else if (!password) {
+    throw new Error('비밀번호를 입력해주세요');
+  }
   // Login
   const loginData = await fetch('/public/data/loginData.json').then((res) =>
     res.json()
