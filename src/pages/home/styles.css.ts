@@ -17,4 +17,5 @@ export const HomeBg = style({
   width: '100%',
   paddingBottom: '100%',
   zIndex: 0,
+  backgroundSize: 'cover',
 });
